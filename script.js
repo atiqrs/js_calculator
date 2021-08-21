@@ -2,7 +2,7 @@ class Calculator {
     constructor(old_valueTextElement, new_valueTextElement) {
         this.old_valueTextElement = old_valueTextElement
         this.new_valueTextElement = new_valueTextElement
-        this.clear()
+            // this.clear()
     }
 
     clear() {
@@ -16,8 +16,7 @@ class Calculator {
     }
 
     appendNumber(number) {
-        if (number === '.' && this.new_value.includes('.'))
-            return this.new_value = this.new_value.toString() + number.toString()
+        if (number === '.' && this.new_value.includes('.')) return this.new_value = this.new_value.toString() + number.toString()
     }
 
     chooseOperation(operation) {
@@ -90,8 +89,8 @@ const operationButtons = document.querySelectorAll('[data_operation]')
 const equalsButton = document.querySelector('[data_equals]')
 const deleteButton = document.querySelector('[data_delete]')
 const allClearButton = document.querySelector('[data_all_clear]')
-const old_valueTextElement = document.querySelector('[data-old-value]')
-const new_valueTextElement = document.querySelector('[data-new-value]')
+const old_valueTextElement = document.querySelector('[data_old_value]')
+const new_valueTextElement = document.querySelector('[data_new_value]')
 
 const calculator = new Calculator(old_valueTextElement, new_valueTextElement)
 
