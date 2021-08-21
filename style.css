@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #100A1C, #1A1734, #1C0E21);
+}
+
+.calculator_container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
