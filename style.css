@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +15,7 @@ body {
 .calculator_container {
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
@@ -16,9 +24,9 @@ body {
 .calculator_container>button {
     cursor: pointer;
     font-size: 2rem;
-    /* border: 1px, solid #FAD000; */
+    border: 1px, solid #FFFFFF;
     outline: none;
-    /* background-color: rbga(255, 255, 255, 0.75); */
+    background-color: rbga(255, 255, 255, 0.75);
 }
 
 .calculator_container>button:hover {
@@ -44,11 +52,11 @@ body {
 }
 
 .output .old_value {
-    color: rgba(255, 255, 255, 0.75);
+    color: #FAD000;
     font-size: 1.5rem;
 }
 
 .output .new_value {
-    color: white;
+    color: #FAD000;
     font-size: 2.5rem;
 }

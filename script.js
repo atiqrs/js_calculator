@@ -1,7 +1,7 @@
 class Calculator {
-    constructor(oldValueTextElement, newValueTextElement) {
-        this.oldValueTextElement = oldValueTextElement
-        this.newValueTextElement = newValueTextElement
+    constructor(old_valueTextElement, new_valueTextElement) {
+        this.old_valueTextElement = old_valueTextElement
+        this.new_valueTextElement = new_valueTextElement
         this.clear()
     }
 
@@ -31,9 +31,6 @@ class Calculator {
     }
 
     compute() {
-        this.new_value = computation
-        this.operation = undefined
-        this.old_value = ''
         let computation
         const prev = parseFloat(this.old_value)
         const current = parseFloat(this.new_value)
@@ -54,7 +51,9 @@ class Calculator {
             default:
                 return
         }
-
+        this.new_value = computation
+        this.operation = undefined
+        this.old_value = ''
     }
 
     updateDisplay() {
@@ -91,10 +90,10 @@ const operationButtons = document.querySelectorAll('[data_operation]')
 const equalsButton = document.querySelector('[data_equals]')
 const deleteButton = document.querySelector('[data_delete]')
 const allClearButton = document.querySelector('[data_all_clear]')
-const oldValueTextElement = document.querySelector('[data_old_value]')
-const newValueTextElement = document.querySelector('[data_new_value]')
+const old_valueTextElement = document.querySelector('[data-old-value]')
+const new_valueTextElement = document.querySelector('[data-new-value]')
 
-const calculator = new Calculator(oldValueTextElement, newValueTextElement)
+const calculator = new Calculator(old_valueTextElement, new_valueTextElement)
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
