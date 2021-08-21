@@ -1,38 +1,39 @@
 class Calculator {
-    constructor(old_valueTextElement, new_valueTextElement) {
-        this.old_valueTextElement = old_valueTextElement
-        this.new_valueTextElement = new_valueTextElement
-            // this.clear()
+    constructor(oldValueTextElement, newValueTextElement) {
+        this.oldValueTextElement = oldValueTextElement
+        this.newValueTextElement = newValueTextElement
+        this.clear()
     }
 
     clear() {
-        this.new_value = ''
-        this.old_value = ''
+        this.newValue = ''
+        this.oldValue = ''
         this.operation = undefined
     }
 
     delete() {
-        this.new_value = this.new_value.toString().slice(0, -1)
+        this.newValue = this.newValue.toString().slice(0, -1)
     }
 
     appendNumber(number) {
-        if (number === '.' && this.new_value.includes('.')) return this.new_value = this.new_value.toString() + number.toString()
+        if (number === '.' && this.newValue.includes('.')) return
+        this.newValue = this.newValue.toString() + number.toString()
     }
 
     chooseOperation(operation) {
-        if (this.new_value === '') return
-        if (this.old_value !== '') {
+        if (this.newValue === '') return
+        if (this.oldValue !== '') {
             this.compute()
         }
         this.operation = operation
-        this.old_value = this.new_value
-        this.new_value = ''
+        this.oldValue = this.newValue
+        this.newValue = ''
     }
 
     compute() {
         let computation
-        const prev = parseFloat(this.old_value)
-        const current = parseFloat(this.new_value)
+        const prev = parseFloat(this.oldValue)
+        const current = parseFloat(this.newValue)
         if (isNaN(prev) || isNaN(current)) return
         switch (this.operation) {
             case '+':
@@ -50,20 +51,9 @@ class Calculator {
             default:
                 return
         }
-        this.new_value = computation
+        this.newValue = computation
         this.operation = undefined
-        this.old_value = ''
-    }
-
-    updateDisplay() {
-        this.new_valueTextElement.innerText =
-            this.getDisplayNumber(this.new_value)
-        if (this.operation != null) {
-            this.old_valueTextElement.innerText =
-                `${this.getDisplayNumber(this.old_value)} ${this.operation}`
-        } else {
-            this.old_valueTextElement.innerText = ''
-        }
+        this.oldValue = ''
     }
 
     getDisplayNumber(number) {
@@ -82,17 +72,29 @@ class Calculator {
             return integerDisplay
         }
     }
+
+    updateDisplay() {
+        this.newValueTextElement.innerText =
+            this.getDisplayNumber(this.newValue)
+        if (this.operation != null) {
+            this.oldValueTextElement.innerText =
+                `${this.getDisplayNumber(this.oldValue)} ${this.operation}`
+        } else {
+            this.oldValueTextElement.innerText = ''
+        }
+    }
 }
+
 
 const numberButtons = document.querySelectorAll('[data_number]')
 const operationButtons = document.querySelectorAll('[data_operation]')
 const equalsButton = document.querySelector('[data_equals]')
 const deleteButton = document.querySelector('[data_delete]')
 const allClearButton = document.querySelector('[data_all_clear]')
-const old_valueTextElement = document.querySelector('[data_old_value]')
-const new_valueTextElement = document.querySelector('[data_new_value]')
+const oldValueTextElement = document.querySelector('[data_old_value]')
+const newValueTextElement = document.querySelector('[data_new_value]')
 
-const calculator = new Calculator(old_valueTextElement, new_valueTextElement)
+const calculator = new Calculator(oldValueTextElement, newValueTextElement)
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
