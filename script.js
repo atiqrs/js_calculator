@@ -13,7 +13,11 @@ class Calculator {
         this.clear()
     }
 
-    clear() {}
+    clear() {
+        this.new_value = ''
+        this.old_value = ''
+        this.operation = undefined
+    }
 
     delete() {}
 
